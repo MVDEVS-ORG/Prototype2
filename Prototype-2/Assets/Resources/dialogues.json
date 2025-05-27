@@ -1,0 +1,33 @@
+{
+  "conversations": [
+    {
+      "id": "intro",
+      "lines": [
+        {
+          "speaker": "Alice",
+          "text": "Welcome to our village!"
+        },
+        {
+          "speaker": "Bob",
+          "text": "Stay safe, traveler."
+        },
+        {
+          "speaker": "Alice",
+          "text": "yo yo yo!"
+        },
+        {
+          "speaker": "Bob",
+          "text": "ma ma ma ."
+        },
+        {
+          "speaker": "Alice",
+          "text": "go go go go!"
+        },
+        {
+          "speaker": "Bob",
+          "text": "la la la la."
+        }
+      ]
+    }
+  ]
+}
