@@ -14,15 +14,17 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
             _photoSaver = new PhotoSaver(); // we can Inject this if we use Dependency Injections
         }
 
-        public void TakePhoto()
+        public async Awaitable<string> TakePhotoAsync()
         {
             _targetCamera.gameObject.SetActive(true);
-            StartCoroutine(CaptureRoutine());
+            string path = await CaptureRoutineAsync();
+            _targetCamera.gameObject.SetActive(false);
+            return path;
         }
 
-        private IEnumerator CaptureRoutine()
+        private async Awaitable<string> CaptureRoutineAsync()
         {
-            yield return new WaitForEndOfFrame();
+            await Awaitable.EndOfFrameAsync();
 
             // Set up RenderTexture
             int width = Screen.width;
@@ -44,9 +46,9 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
             RenderTexture.active = null;
             Destroy(rt);
 
-            _photoSaver.SavePhoto(photo);
-            _targetCamera.gameObject.SetActive(false);
+            string path = _photoSaver.SavePhoto(photo);
             Destroy(photo); // clean up
+            return path;
         }
     }
 }

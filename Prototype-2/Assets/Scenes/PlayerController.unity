@@ -1456,11 +1456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947694876}
   m_CullTransparentMesh: 1
---- !u!20 &1949153107 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 446546709298389647, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
-  m_PrefabInstance: {fileID: 5326387290962141929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960143627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,10 +1761,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 446546709298389647, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 3770759845299085584, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1810,22 +1801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3875562741436063470, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935112823406979472, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6907195931786449041, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8843772574067057682, guid: 2a1ea6069dacc7c40aae4d759a9295d3, type: 3}
-      propertyPath: _targetCamera
-      value: 
-      objectReference: {fileID: 1949153107}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

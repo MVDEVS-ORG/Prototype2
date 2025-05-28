@@ -22,25 +22,29 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-    bool isStarted = false;
-    bool showGallery = false;
-    private void Update()
+    bool _isStarted = false;
+    bool _showGallery = false;
+    bool _isTakingPhoto = false;
+    private async void Update()
     {
         //Temporary Code to check Dialogues
-        if (Input.GetMouseButtonDown(0) && !isStarted)
+        if (Input.GetMouseButtonDown(0) && !_isStarted)
         {
-            isStarted = true;
+            _isStarted = true;
             _dialogueManager.StartConversation();
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !_isTakingPhoto)
         {
-            _cameraCapture.TakePhoto();
+            _isTakingPhoto = true;
+            string path = await _cameraCapture.TakePhotoAsync();
+            Debug.LogError($"Photo saved: {path}");
+            _isTakingPhoto = false;
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !_isTakingPhoto)
         {
-            showGallery = !showGallery;
-            _photoGalleryUI.gameObject.SetActive(showGallery);
-            if (showGallery)
+            _showGallery = !_showGallery;
+            _photoGalleryUI.gameObject.SetActive(_showGallery);
+            if (_showGallery)
             {
                 _photoGalleryUI.DisplayAllPhotos();
             }
