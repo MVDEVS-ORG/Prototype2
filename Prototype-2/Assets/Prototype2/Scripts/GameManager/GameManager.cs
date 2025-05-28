@@ -1,3 +1,4 @@
+using Assets.Prototype2.Scripts;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Services")]
     public ReticleManager _reticleManager;
+    [SerializeField] private DialogueManager _dialogueManager;
     private void Awake()
     {
         if(Instance!=null)
@@ -15,6 +17,16 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
+        }
+    }
+    bool isStarted = false;
+    private void Update()
+    {
+        //Temporary Code to check Dialogues
+        if (Input.GetMouseButtonDown(0) && !isStarted)
+        {
+            isStarted = true;
+            _dialogueManager.StartConversation();
         }
     }
 
