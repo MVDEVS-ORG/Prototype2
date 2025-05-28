@@ -13,16 +13,13 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
 
         private IPhotoSaver _photoSaver;
 
-        private void Start()
-        {
-            
-            //DisplayAllPhotos();
-        }
 
         public void DisplayAllPhotos()
         {
             foreach (Transform child in _photoContainer)
+            {
                 Destroy(child.gameObject);
+            }
             _photoSaver = new PhotoSaver();
             List<string> paths = _photoSaver.GetSavedPhotoPaths();
             Debug.LogError($"{paths.Count != 0}");

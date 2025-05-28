@@ -12,8 +12,10 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
         public PhotoSaver()
         {
             folderPath = Path.Combine(Application.persistentDataPath, "Photos");
-            if(!Directory.Exists(folderPath))
+            if (!Directory.Exists(folderPath))
+            {
                 Directory.CreateDirectory(folderPath);
+            }
         }
         public List<string> GetSavedPhotoPaths()
         {
