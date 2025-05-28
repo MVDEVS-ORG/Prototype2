@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         {
             _isTakingPhoto = true;
             string path = await _cameraCapture.TakePhotoAsync();
-            Debug.LogError($"Photo saved: {path}");
+            Debug.Log($"Photo saved: {path}");
             _isTakingPhoto = false;
         }
         if (Input.GetKeyDown(KeyCode.I) && !_isTakingPhoto)

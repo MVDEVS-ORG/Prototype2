@@ -22,7 +22,6 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
             }
             _photoSaver = new PhotoSaver();
             List<string> paths = _photoSaver.GetSavedPhotoPaths();
-            Debug.LogError($"{paths.Count != 0}");
             foreach (string path in paths)
             {
                 Texture2D photo = _photoSaver.LoadPhoto(path);

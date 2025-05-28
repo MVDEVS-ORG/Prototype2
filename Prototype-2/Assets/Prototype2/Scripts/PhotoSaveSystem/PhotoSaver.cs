@@ -45,7 +45,7 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
             byte[] bytes = photo.EncodeToPNG();
             string fileName = "Photo_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
             string savedFilePath = Path.Combine(folderPath, fileName);
-            Debug.LogError($"photo saved at : {savedFilePath}");
+            Debug.Log($"photo saved at : {savedFilePath}");
             File.WriteAllBytes(savedFilePath, bytes);
             return savedFilePath;
         }
