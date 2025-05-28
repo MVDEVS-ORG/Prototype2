@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     [Header("Services")]
     public ReticleManager _reticleManager;
     [SerializeField] private DialogueManager _dialogueManager;
+    public DetectableObjectsManager _detectableObjectsManager;
     [SerializeField] private CameraCapture _cameraCapture;
     [SerializeField] private PhotoGalleryUI _photoGalleryUI;
+
     private void Awake()
     {
         if(Instance!=null)
