@@ -14,16 +14,21 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100f;
     public float maxLookAngle = 80;
 
-    private CharacterController _controller;
+    [SerializeField] private CharacterController _controller;
     private Vector3 _velocity;
     private float _verticalLookRotation = 0f;
     private bool _isGrounded;
 
+    [SerializeField] private bool LockCursor;
+
     private void Start()
     {
-        _controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (LockCursor)
+        {
+            _controller = GetComponent<CharacterController>();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     private void Update()
