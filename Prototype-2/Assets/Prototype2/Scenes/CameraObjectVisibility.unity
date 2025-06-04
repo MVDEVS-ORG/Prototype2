@@ -991,15 +991,17 @@ MonoBehaviour:
     FixedDescription: This is a cube yay
     PhotographTaken: 0
     Path: 
-    positionOfCamera: {x: 0, y: 0, z: 0}
-    forwardDirection: {x: 0, y: 0, z: 0}
+    PositionOfCamera: {x: 0, y: 0, z: 0}
+    ForwardDirection: {x: 0, y: 0, z: 0}
+    UnlockWords: []
   - Name: cube 2
     GameObject: {fileID: 936513819}
     FixedDescription: this a cube's brother
     PhotographTaken: 0
     Path: 
-    positionOfCamera: {x: 0, y: 0, z: 0}
-    forwardDirection: {x: 0, y: 0, z: 0}
+    PositionOfCamera: {x: 0, y: 0, z: 0}
+    ForwardDirection: {x: 0, y: 0, z: 0}
+    UnlockWords: []
 --- !u!114 &1175437631
 MonoBehaviour:
   m_ObjectHideFlags: 0
