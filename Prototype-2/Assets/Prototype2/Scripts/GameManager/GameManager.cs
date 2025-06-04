@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public DetectableObjectsManager _detectableObjectsManager;
     public CameraCapture _cameraCapture;
     public PhotoGalleryUI _photoGalleryUI;
+    public PinUpBoardManager _pinUpBoardManager;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     bool _isStarted = false;
     bool _showGallery = false;
     bool _isTakingPhoto = false;
-    private async void Update()
+    private void Update()
     {
         //Temporary Code to check Dialogues
         /*if (Input.GetMouseButtonDown(0) && !_isStarted)

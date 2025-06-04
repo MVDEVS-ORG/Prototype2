@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PinUpCardUI : MonoBehaviour, IPointerClickHandler
+public class PinUpCardUI : MonoBehaviour
 {
     private DescriptiveObject _pinUpCardInfo;
 
@@ -21,12 +21,18 @@ public class PinUpCardUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float _shrunkBottomValue;
     [SerializeField] private float _expandedBottomValue;
 
-    [Range(0.1f,3f)][SerializeField] private float shrinkExpandTime;
+    [Range(0.1f, 3f)][SerializeField] private float shrinkExpandTime;
     private float _internalTimer = 0f;
     private Coroutine _scalingCoroutine = null;
     private FollowScript _followScript = null;
     private CardBehavior _cardMovement;
     private RectTransform _selfRectTransform;
+
+    private Vector2 OriginalPos;
+    [SerializeField] private Vector2 CenterPos;
+    [Range(0.1f, 3f)][SerializeField] private float moveTime;
+
+    public bool inFocus;
 
     private void Start()
     {
@@ -48,7 +54,7 @@ public class PinUpCardUI : MonoBehaviour, IPointerClickHandler
     {
         if (_scalingCoroutine == null)
         {
-            _scalingCoroutine = StartCoroutine(ExpandPhoto());
+            _scalingCoroutine = StartCoroutine(!inFocus?ExpandPhoto():CollapsePhoto());
             _followScript.enabled = false;
             _cardMovement.enabled = false;
         }
@@ -57,27 +63,62 @@ public class PinUpCardUI : MonoBehaviour, IPointerClickHandler
 
     IEnumerator ExpandPhoto()
     {
-        float initialHeight = _selfTransform.height;
+        OriginalPos = _selfRectTransform.localPosition;
         _internalTimer = 0f;
-        while(_internalTimer<=1)
+        while (_internalTimer<=1)
+        {
+            _selfRectTransform.anchoredPosition = Vector2.Lerp(OriginalPos, CenterPos, _internalTimer);
+            _internalTimer += Time.deltaTime * 1 / moveTime;
+            yield return new WaitForEndOfFrame();
+        }
+        float initialHeight = _selfRectTransform.rect.height;
+        float initialWidth = _selfRectTransform.rect.width;
+        _internalTimer = 0f;
+        while (_internalTimer <= 1)
         {
             _selfTransform.height = Mathf.Lerp(initialHeight, _expandedBottomValue, _internalTimer);
-            _selfRectTransform.sizeDelta = new Vector2(_selfTransform.width,_selfTransform.height);
-            _internalTimer += Time.deltaTime * 1/shrinkExpandTime;
+            _selfRectTransform.sizeDelta = new Vector2(initialWidth, _selfTransform.height);
+            _internalTimer += Time.deltaTime * 1 / shrinkExpandTime;
             yield return new WaitForEndOfFrame();
         }
         _selfTransform.height = Mathf.Lerp(initialHeight, _expandedBottomValue, 1);
         _scalingCoroutine = null;
         _fixedText.gameObject.SetActive(true);
         _speculations.gameObject.SetActive(true);
+        _internalTimer = 0f;
+        _followScript.enabled = true;
+        _cardMovement.enabled = true;
+        inFocus = true;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    IEnumerator CollapsePhoto()
     {
-        Debug.LogError(eventData.button);
-        if (eventData.button == PointerEventData.InputButton.Right)
+        float initialHeight = _selfRectTransform.rect.height;
+        float initialWidth = _selfRectTransform.rect.width;
+        
+        _fixedText.gameObject.SetActive(false);
+        _speculations.gameObject.SetActive(false);
+        _internalTimer = 0f;
+        while (_internalTimer <= 1)
         {
-            OnSelected();
+            _selfTransform.height = Mathf.Lerp(initialHeight, _shrunkBottomValue, _internalTimer);
+            _selfRectTransform.sizeDelta = new Vector2(initialWidth, _selfTransform.height);
+            _internalTimer += Time.deltaTime * 1 / shrinkExpandTime;
+            yield return new WaitForEndOfFrame();
         }
+        _selfTransform.height = Mathf.Lerp(initialHeight, _expandedBottomValue, 1);
+        _scalingCoroutine = null;
+        _internalTimer = 0f;
+        while (_internalTimer <= 1)
+        {
+            _selfRectTransform.anchoredPosition = Vector2.Lerp(CenterPos, OriginalPos, _internalTimer);
+            _internalTimer += Time.deltaTime * 1 / moveTime;
+            yield return new WaitForEndOfFrame();
+        }
+        _internalTimer = 0f;
+        _followScript.enabled = true;
+        _cardMovement.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        inFocus = false;
     }
 }
