@@ -39,8 +39,8 @@ public class DetectableObjectsManager : MonoBehaviour
         {
             //call the photo thing here to get path
             _objects[0].PhotographTaken = true;
-            _objects[0].positionOfCamera = _photographCamera.transform.position;
-            _objects[0].forwardDirection = _photographCamera.transform.forward;
+            _objects[0].PositionOfCamera = _photographCamera.transform.position;
+            _objects[0].ForwardDirection = _photographCamera.transform.forward;
         }
     }
 }

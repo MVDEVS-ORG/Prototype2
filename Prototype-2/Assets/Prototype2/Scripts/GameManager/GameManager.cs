@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Services")]
     public ReticleManager _reticleManager;
-    [SerializeField] private DialogueManager _dialogueManager;
+    public DialogueManager _dialogueManager;
     public DetectableObjectsManager _detectableObjectsManager;
-    [SerializeField] private CameraCapture _cameraCapture;
-    [SerializeField] private PhotoGalleryUI _photoGalleryUI;
+    public CameraCapture _cameraCapture;
+    public PhotoGalleryUI _photoGalleryUI;
+    public PinUpBoardManager _pinUpBoardManager;
 
     private void Awake()
     {
@@ -27,10 +28,10 @@ public class GameManager : MonoBehaviour
     bool _isStarted = false;
     bool _showGallery = false;
     bool _isTakingPhoto = false;
-    private async void Update()
+    private void Update()
     {
         //Temporary Code to check Dialogues
-        if (Input.GetMouseButtonDown(0) && !_isStarted)
+        /*if (Input.GetMouseButtonDown(0) && !_isStarted)
         {
             _isStarted = true;
             _dialogueManager.StartConversation();
@@ -50,6 +51,6 @@ public class GameManager : MonoBehaviour
             {
                 _photoGalleryUI.DisplayAllPhotos();
             }
-        }
+        }*/
     }
 }

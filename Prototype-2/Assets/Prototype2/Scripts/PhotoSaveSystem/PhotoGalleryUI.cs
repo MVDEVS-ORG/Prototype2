@@ -13,6 +13,10 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
 
         private IPhotoSaver _photoSaver;
 
+        public void Start()
+        {
+            _photoSaver = new PhotoSaver();
+        }
 
         public void DisplayAllPhotos()
         {
@@ -32,5 +36,16 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
                 }
             }
         }
+
+        public Texture GetPhoto(string path)
+        {
+            Texture2D photo = _photoSaver.LoadPhoto(path);
+            if (photo != null)
+            {
+                return photo;
+            }
+            return null;
+        }
+
     }
 }
