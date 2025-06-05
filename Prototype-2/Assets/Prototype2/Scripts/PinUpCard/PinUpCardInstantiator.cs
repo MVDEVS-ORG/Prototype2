@@ -7,13 +7,16 @@ public class PinUpCardInstantiator : MonoBehaviour
     [SerializeField] CardReferenceHolder PinUpCard;
     private void OnEnable()
     {
-        List<DescriptiveObject> temp = GameManager.Instance._detectableObjectsManager._objectInLevel.DescriptiveLevelObjects;
-        foreach(var obj in temp)
+        if (GameManager.Instance?._detectableObjectsManager?._objectInLevel?.DescriptiveLevelObjects != null)
         {
-            if(obj.PhotographTaken && !ObjectsOnBoard.ContainsKey(obj))
+            List<DescriptiveObject> temp = GameManager.Instance._detectableObjectsManager._objectInLevel.DescriptiveLevelObjects;
+            foreach (var obj in temp)
             {
-                ObjectsOnBoard.Add(obj,Instantiate(PinUpCard, transform));
-                ObjectsOnBoard[obj].card.Initialize(obj);
+                if (obj.PhotographTaken && !ObjectsOnBoard.ContainsKey(obj))
+                {
+                    ObjectsOnBoard.Add(obj, Instantiate(PinUpCard, transform));
+                    ObjectsOnBoard[obj].card.Initialize(obj);
+                }
             }
         }
     }

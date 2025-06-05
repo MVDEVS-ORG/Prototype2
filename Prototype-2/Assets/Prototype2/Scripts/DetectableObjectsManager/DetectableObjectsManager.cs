@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.Collections;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class DetectableObjectsManager : MonoBehaviour
         }
     }
 
-    private void TakePhoto()
+    public async Task TakePhoto()
     {
         if(_objects.Count>1)
         {
@@ -37,10 +38,11 @@ public class DetectableObjectsManager : MonoBehaviour
         }
         else
         {
-            //call the photo thing here to get path
+            string path = await GameManager.Instance._cameraCapture.TakePhotoAsync(_objects[0].Name);
             _objects[0].PhotographTaken = true;
             _objects[0].PositionOfCamera = _photographCamera.transform.position;
-            _objects[0].ForwardDirection = _photographCamera.transform.forward;
+            _objects[0].RotationOfCamera = _photographCamera.transform.rotation;
+            _objects[0].Path = path;
         }
     }
 }

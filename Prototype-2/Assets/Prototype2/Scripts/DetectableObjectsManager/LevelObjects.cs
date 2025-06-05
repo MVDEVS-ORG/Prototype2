@@ -16,6 +16,6 @@ public class DescriptiveObject
     public bool PhotographTaken = false;
     public string Path;
     public Vector3 PositionOfCamera;
-    public Vector3 ForwardDirection;
+    public Quaternion RotationOfCamera;
     public List<string> UnlockWords;
 }
