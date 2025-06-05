@@ -45,8 +45,13 @@ public class PinUpCardUI : MonoBehaviour
 
     public void Initialize(DescriptiveObject obj)
     {
-        _photoTaken.texture = GameManager.Instance._photoGalleryUI.GetPhoto(obj.Path);
-        _fixedText.text = obj.FixedDescription;
+        Debug.Log(obj.Path);
+        Texture newTex = GameManager.Instance._photoGalleryUI.GetPhoto(obj.Path);
+        if (newTex != null)
+        {
+            _photoTaken.texture = newTex;
+            _fixedText.text = obj.FixedDescription;
+        }
         //TODO add the variable text part
     }
 

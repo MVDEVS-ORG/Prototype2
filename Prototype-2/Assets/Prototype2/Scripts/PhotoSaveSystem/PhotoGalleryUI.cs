@@ -8,33 +8,11 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
 {
     public class PhotoGalleryUI : MonoBehaviour
     {
-        [SerializeField] private GameObject _photoPrefab;
-        [SerializeField] Transform _photoContainer;
-
         private IPhotoSaver _photoSaver;
 
-        public void Start()
+        private void Start()
         {
             _photoSaver = new PhotoSaver();
-        }
-
-        public void DisplayAllPhotos()
-        {
-            foreach (Transform child in _photoContainer)
-            {
-                Destroy(child.gameObject);
-            }
-            _photoSaver = new PhotoSaver();
-            List<string> paths = _photoSaver.GetSavedPhotoPaths();
-            foreach (string path in paths)
-            {
-                Texture2D photo = _photoSaver.LoadPhoto(path);
-                if(photo != null)
-                {
-                    GameObject instance = Instantiate(_photoPrefab, _photoContainer);
-                    instance.GetComponent<RawImage>().texture = photo;
-                }
-            }
         }
 
         public Texture GetPhoto(string path)

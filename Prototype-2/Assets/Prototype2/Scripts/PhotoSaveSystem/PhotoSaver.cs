@@ -40,10 +40,10 @@ namespace Assets.Prototype2.Scripts.PhotoSaveSystem
             return texture;
         }
 
-        public string SavePhoto(Texture2D photo)
+        public string SavePhoto(Texture2D photo, string name)
         {
             byte[] bytes = photo.EncodeToPNG();
-            string fileName = "Photo_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+            string fileName = $"Photo_{name}.png";
             string savedFilePath = Path.Combine(folderPath, fileName);
             Debug.Log($"photo saved at : {savedFilePath}");
             File.WriteAllBytes(savedFilePath, bytes);

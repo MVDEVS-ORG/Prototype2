@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public CameraCapture _cameraCapture;
     public PhotoGalleryUI _photoGalleryUI;
     public PinUpBoardManager _pinUpBoardManager;
+    public PhotoCameraManager _photoCameraManager;
+    public PlayerController _playerController;
 
     private void Awake()
     {
@@ -26,10 +28,35 @@ public class GameManager : MonoBehaviour
         }
     }
     bool _isStarted = false;
-    bool _showGallery = false;
     bool _isTakingPhoto = false;
-    private void Update()
+    private async void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            _reticleManager.DisableReticle();
+            _photoCameraManager.EnableSecondCamTracking();
+        }
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            _reticleManager.EnableReticle();
+            _photoCameraManager.DisableSecondCamTracking();
+        }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            _reticleManager.EnableReticle();
+            _ = _detectableObjectsManager.TakePhoto();
+            _photoCameraManager.DisableSecondCamTracking();
+        }
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            _playerController.StopMovementAndCamera = true;
+            _pinUpBoardManager.EnablePinUpBoard();
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _playerController.StopMovementAndCamera = false;
+            _pinUpBoardManager.DisablePinUpBoard();
+        }
         //Temporary Code to check Dialogues
         /*if (Input.GetMouseButtonDown(0) && !_isStarted)
         {

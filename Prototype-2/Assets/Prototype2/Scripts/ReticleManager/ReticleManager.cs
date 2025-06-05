@@ -20,6 +20,17 @@ public class ReticleManager : MonoBehaviour
         CurrentReticleType = InteractionType.None;
     }
 
+    public void DisableReticle()
+    {
+        gameObject.SetActive(false);
+    }
+
+
+    public void EnableReticle()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void ChangeReticle(InteractionType typeOfInteraction)
     {
         try

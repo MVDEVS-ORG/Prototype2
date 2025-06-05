@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool LockCursor;
 
+    public bool StopMovementAndCamera = false;
+
     private void Start()
     {
         if (LockCursor)
@@ -33,8 +35,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        HandleMouseLook();
+        if (!StopMovementAndCamera)
+        {
+            HandleMovement();
+            HandleMouseLook();
+        }
     }
 
     private void HandleMouseLook()
