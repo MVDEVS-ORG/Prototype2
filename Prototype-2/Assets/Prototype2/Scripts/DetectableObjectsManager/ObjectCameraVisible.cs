@@ -15,9 +15,9 @@ public class ObjectCameraVisible : MonoBehaviour
         return true;
     }
 
-    private bool IsInLOS(Camera photographCamera)
+    private bool IsInLOS(Camera photographCamera, LayerMask layerMask)
     {
-        if(Physics.Raycast(photographCamera.transform.position,(transform.position - photographCamera.transform.position),out RaycastHit hitInfo,20f))
+        if(Physics.Raycast(photographCamera.transform.position,(transform.position - photographCamera.transform.position),out RaycastHit hitInfo,20f,layerMask))
         {
             if (hitInfo.transform == gameObject.transform)
             {
@@ -27,8 +27,8 @@ public class ObjectCameraVisible : MonoBehaviour
         return false;
     }
 
-    public bool IsWithinCamFrustrum(Camera photographCamera)
+    public bool IsWithinCamFrustrum(Camera photographCamera, LayerMask layerMask)
     {
-        return (IsVisible(photographCamera) && IsInLOS(photographCamera));
+        return (IsVisible(photographCamera) && IsInLOS(photographCamera, layerMask));
     }
 }

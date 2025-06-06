@@ -43,9 +43,13 @@ public class GameManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
-            _reticleManager.EnableReticle();
-            _ = _detectableObjectsManager.TakePhoto();
-            _photoCameraManager.DisableSecondCamTracking();
+            
+            bool photograph = await _detectableObjectsManager.TakePhoto();
+            if (photograph)
+            {
+                _reticleManager.EnableReticle();
+                _photoCameraManager.DisableSecondCamTracking();
+            }
         }
         if(Input.GetKeyDown(KeyCode.Tab))
         {

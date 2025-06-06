@@ -12,7 +12,9 @@ public class DescriptiveObject
 {
     public string Name;
     public ObjectCameraVisible GameObject;
+    public ObjectInAltScene SecondObject;
     public string FixedDescription;
+    public string Speculations;
     public bool PhotographTaken = false;
     public string Path;
     public Vector3 PositionOfCamera;
