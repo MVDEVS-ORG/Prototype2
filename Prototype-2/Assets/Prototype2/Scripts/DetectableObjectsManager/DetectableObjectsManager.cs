@@ -33,7 +33,7 @@ public class DetectableObjectsManager : MonoBehaviour
 
     public async Task<bool> TakePhoto()
     {
-        if(_objects.Count>1 && _objects.Count!=0)
+        if(_objects.Count>1 || _objects.Count==0)
         {
             Debug.LogError("Too many objects in the Photo");
             return false;
