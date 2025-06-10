@@ -34,7 +34,7 @@ public class CameraRayInteractor : MonoBehaviour
 
                     case InteractionType.Spontaneous:
                         GameManager.Instance._reticleManager.ChangeReticle(interaction.InteractionType);
-                        if (Input.GetKeyDown(KeyCode.E))
+                        if (Input.GetKeyDown(KeyCode.Q))
                         {
                             interaction.Interact();
                         }

@@ -22,11 +22,14 @@ namespace Assets.Prototype2.Scripts
             dialogueManagerUI.gameObject.SetActive(false);
         }
 
-        public void StartConversation()
+        public void StartConversation(string ConversationId)
         {
             dialogueManagerUI.gameObject.SetActive(true);
             dialogueProvider = new JsonDialogueProvider("dialogues");
-            StartDialogue("intro");
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            GameManager.Instance._playerController.StopMovementAndCamera = true;
+            StartDialogue(ConversationId);
         }
         public void StartDialogue(string conversationId)
         {
@@ -67,6 +70,9 @@ namespace Assets.Prototype2.Scripts
             dialogueText.text = "";
             Debug.Log("Dialogue ended.");
             dialogueManagerUI.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+            GameManager.Instance._playerController.StopMovementAndCamera = false;
         }
     }
 }

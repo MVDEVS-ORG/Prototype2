@@ -50,7 +50,7 @@ public class ReticleManager : MonoBehaviour
     {
         if (Reticles.IndexOf(_currentReticle)== (int)InteractionType.Held)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.Q))
             {
                 _heldReticle.fillAmount = MathF.Min(1, _heldReticle.fillAmount + (Time.fixedDeltaTime * 1 / _fillTime));
             }

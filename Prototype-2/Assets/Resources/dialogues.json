@@ -1,33 +1,95 @@
 {
-  "conversations": [
-    {
-      "id": "intro",
-      "lines": [
+    "conversations": [
         {
-          "speaker": "Alice",
-          "text": "Welcome to our village!"
+            "id": "intro",
+            "lines": [
+                {
+                    "speaker": "Alice",
+                    "text": "Welcome to our village!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "Stay safe, traveler."
+                },
+                {
+                    "speaker": "Alice",
+                    "text": "yo yo yo!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "ma ma ma ."
+                },
+                {
+                    "speaker": "Alice",
+                    "text": "go go go go!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "la la la la."
+                }
+            ]
         },
         {
-          "speaker": "Bob",
-          "text": "Stay safe, traveler."
+            "id": "bob conversation",
+            "lines": [
+                {
+                    "speaker": "Bob",
+                    "text": "My name is Bobby boy!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "My momma say I'm special."
+                },
+                {
+                    "speaker": "Alice",
+                    "text": "Special special!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "Yeah Special special."
+                },
+                {
+                    "speaker": "Alice",
+                    "text": "asdfjhagfhasfgaf!"
+                },
+                {
+                    "speaker": "Bob",
+                    "text": "huh?"
+                }
+            ]
         },
         {
-          "speaker": "Alice",
-          "text": "yo yo yo!"
-        },
-        {
-          "speaker": "Bob",
-          "text": "ma ma ma ."
-        },
-        {
-          "speaker": "Alice",
-          "text": "go go go go!"
-        },
-        {
-          "speaker": "Bob",
-          "text": "la la la la."
+            "id": "police interaction",
+            "lines": [
+                {
+                    "speaker": "Carl",
+                    "text": "Evening Detective."
+                },
+                {
+                    "speaker": "Detective",
+                    "text": "Evening Carl. What have we got here today."
+                },
+                {
+                    "speaker": "Carl",
+                    "text": "Murder. The victim's name is Mrs. Smith wife of Mr Smith. We estimate the time of death around 8-10 PM as nobody entered the room prior. Mr. Smith was the first to enter after arriving from the party."
+                },
+                {
+                    "speaker": "Detective",
+                    "text": "Any signs of intrusion? Forced Entry?"
+                },
+                {
+                    "speaker": "Carl",
+                    "text": "No door seems intact and nothing seems broken or out of place whoever killed her was clean about it. No messages to speak of either."
+                },
+                {
+                    "speaker": "Detective",
+                    "text": "Let's take a look."
+                },
+                {
+                    "speaker": "Carl",
+                    "text": "The man beside me is her husband. You may want to speak with him."
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
